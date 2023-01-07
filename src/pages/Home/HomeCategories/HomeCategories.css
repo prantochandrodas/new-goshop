@@ -1,0 +1,44 @@
+
+.gridCategory {
+   
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+   gap: 10px;
+   
+    
+}
+@media screen and (min-width:687px) and (max-width:991px) {
+
+    .gridCategory {
+   
+        grid-template-columns: repeat(4,1fr);
+       
+    }
+    .categories{
+        width: 95%;
+        margin: 0px auto;
+    }
+}
+
+/* ======================================
+end tab view =================================== */
+
+
+/*===========================================
+  mobile view 
+ =================== ==============================*/
+@media only screen and (max-width:688px) {
+
+    .gridCategory {
+   
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+       
+
+        
+    }
+    .categories{
+        width: 95%;
+        margin: 0px auto;
+    }
+}

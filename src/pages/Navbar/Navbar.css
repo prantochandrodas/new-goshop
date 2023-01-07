@@ -1,0 +1,7 @@
+.myLink {
+    margin-left: 50px;
+}
+.myLink a:hover{
+    font-weight: 700;
+    color: orange!important;
+}

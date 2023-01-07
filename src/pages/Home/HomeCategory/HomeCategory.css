@@ -1,0 +1,22 @@
+.homeCategory {
+    padding: 10px;
+    margin: 10px;
+    background: #ffffff;
+    border: 1px solid gray;
+    cursor: pointer;
+    width: 130px;
+}
+.homeCategory:hover{
+    transform: scale(1.1);
+    z-index: 1;
+}
+.homeCategory img{
+    width: 130px;
+    height: 100px;
+}
+.homeCategory p{
+    margin-top: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+

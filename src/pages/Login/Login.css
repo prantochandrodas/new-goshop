@@ -1,0 +1,13 @@
+.loginFrom {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.LoginFromChild {
+    width:  24rem;
+    padding: 1.75rem;
+}
+.input-style {
+    padding: 13px;
+}

@@ -1,0 +1,33 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+@media screen and (min-width:687px) and (max-width:991px) {
+
+    .footer{
+        display: flex;
+        justify-content: space-around;
+    
+    }
+    
+}
+
+/* ======================================
+end tab view =================================== */
+
+
+/*===========================================
+  mobile view 
+ =================== ==============================*/
+@media only screen and (max-width:688px) {
+
+    .footer{
+        display: block;
+       
+    
+    }
+    
+}

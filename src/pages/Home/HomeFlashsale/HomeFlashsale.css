@@ -1,0 +1,34 @@
+.FlashGridCategory{
+    display: grid;
+    grid-template-columns: repeat(4 ,250px);
+    gap: 20px;
+}
+@media screen and (min-width:687px) and (max-width:991px) {
+    .FlashGridCategory{
+        display: grid;
+        grid-template-columns: repeat(2 ,250px);
+        gap: 20px;
+    }
+    
+}
+
+/* ======================================
+end tab view =================================== */
+
+
+/*===========================================
+  mobile view 
+ =================== ==============================*/
+@media only screen and (max-width:688px) {
+
+    .FlashGridCategory{
+        display: block;
+        width: 80%;
+        
+        margin: 0px auto;
+    }
+    .flashsale {
+        width: 100%;
+        margin:20px 0px;
+    }
+}
