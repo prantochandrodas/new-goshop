@@ -7,10 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Box, Button, CircularProgress } from '@mui/material';
 import { AuthContext } from '../Context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import Spinner from '../Spinner';
 import { toast } from 'react-toastify';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -68,7 +67,9 @@ export default function ManageSeller() {
         })
     }
     if (isLoading) {
-        return <Spinner></Spinner>
+        return <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '150px 0px' }}>
+        <CircularProgress />
+    </Box>
     }
     return (
     <TableContainer component={Paper} style={{marginTop:'100px'}}>

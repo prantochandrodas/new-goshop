@@ -2,15 +2,17 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import { ProductContainer } from '../Home/HomeFlashsale/HomeFlashSalestyle';
-import Spinner from '../Spinner';
 import Product from './Product';
+import './Products.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Products = () => {
     const { user } = useContext(AuthContext);
     const products = useLoaderData();
     const handelWatchLater = (product) => {
+        console.log(product);
         const watchLater = {
+            product_id:product._id,
             category_id: product.category_id,
             picture: product.picture,
             product_name: product.product_name,
@@ -23,6 +25,8 @@ const Products = () => {
             advertise: false,
             paid: false
         }
+
+       
         fetch('http://localhost:5000/watchLater', {
             method: 'POST',
             headers: {
@@ -34,9 +38,9 @@ const Products = () => {
         })
             .then(res => res.json())
             .then(result => {
+                console.log(result);
                 if (result.acknowledged) {
-                    <Spinner></Spinner>
-                    toast.success('🦄 Wow so easy!', {
+                    toast.success('Sucess fully Added', {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -48,20 +52,30 @@ const Products = () => {
                     });
 
                 }
+               if(result===false){
+                toast.info('Already Added', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
 
+               }
             })
     }
     return (
-        <div>
-            <ProductContainer>
-                {
-                    products.map(product => <Product
-                        key={product._id}
-                        product={product}
-                        handelWatchLater={handelWatchLater}
-                    ></Product>)
-                }
-            </ProductContainer>
+        <div className='products'>
+            {
+                products.map(product => <Product
+                    key={product._id}
+                    product={product}
+                    handelWatchLater={handelWatchLater}
+                ></Product>)
+            }
             <ToastContainer />
         </div>
     );

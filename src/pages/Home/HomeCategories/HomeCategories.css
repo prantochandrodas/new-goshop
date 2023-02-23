@@ -39,6 +39,6 @@ end tab view =================================== */
     }
     .categories{
         width: 95%;
-        margin: 0px auto;
+        margin: 0px auto!important;
     }
 }

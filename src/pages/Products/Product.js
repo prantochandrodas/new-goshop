@@ -33,9 +33,10 @@ export default function Product({product,handelWatchLater}) {
   };
 
   return (
-    <Card sx={{ width:350 }} className="flashsale">
+    <div className='product'>
+      <Card className="flashsale product-img">
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 200 }}
         image={picture}
         title="picture"
       />
@@ -57,5 +58,6 @@ export default function Product({product,handelWatchLater}) {
         }
       </CardActions>
     </Card>
+    </div>
   );
 }

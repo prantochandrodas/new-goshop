@@ -7,10 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Box, Button, CircularProgress } from '@mui/material';
 import { AuthContext } from '../Context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import Spinner from '../Spinner';
 import { toast } from 'react-toastify';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -47,9 +46,6 @@ export default function Myproducts() {
     const handelDelete=(id)=>{
         fetch(`http://localhost:5000/myProduct/${id}`,{
             method:'DELETE',
-            headers:{
-                authorization:`bearar ${localStorage.getItem('accessToken')}`
-            }
         })
         .then(res=>res.json())
         .then(data=>{
@@ -71,10 +67,12 @@ export default function Myproducts() {
         })
     }
     if (isLoading) {
-        return <Spinner></Spinner>
+        return  <Box sx={{ display: 'flex' ,alignItems:'center',justifyContent:'center',margin:'150px 0px'}}>
+        <CircularProgress />
+      </Box>
     }
     return (
-    <TableContainer component={Paper} style={{marginTop:'100px'}}>
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -109,5 +107,6 @@ export default function Myproducts() {
         </TableBody>
       </Table>
     </TableContainer>
+    
   );
 }

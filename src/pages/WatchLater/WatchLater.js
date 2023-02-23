@@ -1,8 +1,8 @@
+import { Box, CircularProgress } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import { ProductContainer } from '../Home/HomeFlashsale/HomeFlashSalestyle';
-import Spinner from '../Spinner';
 import AllWatchLater from './AllWatchLater';
 
 const WatchLater = () => {
@@ -18,10 +18,12 @@ const WatchLater = () => {
     });
     console.log(watchLater.length);
     if (isLoading) {
-        return <Spinner></Spinner>
+        return <Box sx={{ display: 'flex' ,alignItems:'center',justifyContent:'center',margin:'150px 0px'}}>
+        <CircularProgress />
+      </Box>
     }
     return (
-        <div style={{marginTop:'100px'}}>
+        <div>
             <h1 style={{textAlign:'center'}}>Watch Later Products </h1>
             {
                 watchLater?.length===0?<div>

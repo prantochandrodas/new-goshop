@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import { Button, Tab, Tabs, Toolbar, Typography, useMediaQuery, useTheme, useThemeProps } from '@mui/material';
 import DrawerCompo from '../DrawerCompo/DrawerCompo';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/Logo2.png'
+import logo from '../../assets/Logo.png'
 import { AuthContext } from '../Context/AuthProvider';
 import './Navbar.css';
 const Navbar = () => {
@@ -20,9 +20,9 @@ const Navbar = () => {
     console.log(isMatch);
     return (
         <React.Fragment>
-            <AppBar sx={{ background: '#ffffff' }}>
+            <AppBar sx={{ background: '#ffffff',position:'sticky' }} elevation={0}>
                 <Toolbar>
-                <img src={logo} style={{width:"100px"}} alt="" />
+                { <img src={logo} height={80} alt="" /> }
                     {
                         isMatch ?
 
@@ -36,8 +36,10 @@ const Navbar = () => {
                                       {
                                         user?.uid?
                                        <> 
-                                       <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"20px"}}  to='/'> Home</Link>
-                                        <Link   style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"20px"}} to='/dashboard'> DashBoard</Link></> :
+                                       <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/'> Home</Link>
+                                       <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/MyOrders'> MyOrders</Link>
+                                       <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/WatchLater'> WatchLater</Link>
+                                        <Link   style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"15px"}} to='/dashboard'> DashBoard</Link></> :
                                         <></>
                                       }
                                     </Tabs>

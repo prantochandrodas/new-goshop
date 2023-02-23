@@ -1,11 +1,14 @@
-import { Button } from '@mui/material';
+import { Button, CircularProgress, TextField } from '@mui/material';
 import React, {  useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useNavigation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import './AddProduct.css';
 import { AuthContext } from '../Context/AuthProvider';
+import { Box } from '@mui/system';
+import { toast, ToastContainer } from 'react-toastify';
 const AddProduct = () => {
+    const [loading,setLoading]=useState(false);
     const navigate=useNavigate();
     const {user}=useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -18,9 +21,8 @@ const AddProduct = () => {
     });
     
    const handelAddProduct = data => {
-    console.log(data);
+    setLoading(true);
     const image = data.picture[0];
-    console.log(image);
     const formData = new FormData();
     formData.append('image', image);
     const url = `https://api.imgbb.com/1/upload?&key=${imgHostKey}`;
@@ -62,45 +64,61 @@ const AddProduct = () => {
                     .then(res => res.json())
                     .then(result => {
                         if(result.acknowledged){
-                           
+                            setLoading(false);
+                            toast.success('Sucess fully Added', {
+                                position: "top-center",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            });
                             navigate('/')
-                        
                         }
-                        
                     })
-
             }
         })
     }
+
+    if(loading){
+        return  <Box sx={{ display: 'flex' ,alignItems:'center',justifyContent:'center',margin:'150px 0px'}}>
+        <CircularProgress />
+      </Box>
+    }
     return (
-        <div className=' loginFrom' style={{marginTop:'100px'}}>
+        <div className='loginFrom'>
             <div className='LoginFromChild'>
                 <h1 style={{fontSize:'2.25rem',lineHeight:'2.5rem'}}>AddProduct</h1>
                 <form onSubmit={handleSubmit(handelAddProduct)}>
-
-                    <div style={{width:'100%'}}>
-                        <label >
-                            <span  style={{fontSize:'20px',fontWeight:'500',padding:' 10px 0px',display:'block'}}>Name</span>
-                        </label>
-                        <input type="text"
-                            {...register("saller_name", { required: "saller_name is required" })}
-                            placeholder="saller_name" style={{backgroundColor:'#ffffff',padding:'10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.saller_name && <p style={{color:"red"}} role="alert">{errors.saller_name?.message}</p>}
-                    </div>
-
-
-                    <div style={{width:'100%'}}>
-                        <label >
-                            <span  style={{fontSize:'20px',fontWeight:'500',padding:' 10px 0px',display:'block'}}>Product_name</span>
-                        </label>
-                        <input type="text"
-                            {...register("product_name", { required: "product_name is required" })}
-                            placeholder="product_name" style={{backgroundColor:'#ffffff',padding:' 10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.product_name && <p style={{color:"red"}} role="alert">{errors.product_name?.message}</p>}
-                    </div>
-
-
-                    <div style={{width:'100%'}}>
+                <TextField
+                        type='text'
+                        fullWidth
+                        {...register("saller_name", { required: "saller_name is required" })}
+                        placeholder='Enter Your saller_name'
+                        id="saller_name"
+                        label="saller_name"
+                        variant="outlined"
+                        error={Boolean(errors.saller_name)}
+                        helperText={errors.saller_name?.message}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    
+                     <TextField
+                        type='text'
+                        fullWidth
+                        {...register("product_name", { required: "product_name is required" })}
+                        placeholder='Enter Your product_name'
+                        id="product_name"
+                        label="product_name"
+                        variant="outlined"
+                        error={Boolean(errors.product_name)}
+                        helperText={errors.product_name?.message}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    
+                    <div style={{width:'95%'}}>
                         <label >
                             <span  style={{fontSize:'20px',fontWeight:'500',padding:' 10px 0px',display:'block'}}>picture</span>
                         </label>
@@ -110,28 +128,31 @@ const AddProduct = () => {
                         {errors.picture && <p style={{color:"red"}} role="alert">{errors.picture?.message}</p>}
                     </div>
 
-
-                    <div>
-                        <label >
-                            <span style={{fontSize:'20px',fontWeight:'500',margin:"10px 0px",display:'block'}}>price</span>
-                        </label>
-                        <input type="number"
-                            {...register("original_price", { required: "original_price is required" })}
-                            placeholder="original_price" style={{backgroundColor:'#ffffff',padding:' 10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.original_price && <p style={{color:"red"}} role="alert">{errors.original_price?.message}</p>}
-                    </div>
+                    <TextField
+                        type='number'
+                        fullWidth
+                        {...register("original_price", { required: "original_price is required" })}
+                        placeholder='Enter Your original_price'
+                        id="original_price"
+                        label="original_price"
+                        variant="outlined"
+                        error={Boolean(errors.original_price)}
+                        helperText={errors.original_price?.message}
+                        sx={{ marginTop:2,marginBottom:2}}
+                    />
                     
-                    <div style={{width:'100%'}}>
-                        <label >
-                            <span  style={{fontSize:'20px',fontWeight:'500',margin:"10px 0px",display:'block'}}>Date</span>
-                        </label>
-                        <input type="date"
-                            {...register("posted_date", { required: "posted_date is required" })}
-                            placeholder="posted_date" style={{backgroundColor:'#ffffff',padding:' 10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.posted_date && <p style={{color:"red"}} role="alert">{errors.posted_date?.message}</p>}
-                    </div>
-
-                   
+                     <TextField
+                        type='date'
+                        fullWidth
+                        {...register("posted_date", { required: "posted_date is required" })}
+                        placeholder='Enter Your posted_date'
+                        id="posted_date"
+                        variant="outlined"
+                        error={Boolean(errors.posted_date)}
+                        helperText={errors.posted_date?.message}
+                        sx={{marginBottom:2}}
+                    />
+                    
                     <div style={{width:'100%', margin:" 10px 0"}} >
                         <label><span  style={{fontSize:'20px',fontWeight:'500',margin:"10px 0px",display:'block'}}>Category Name</span></label>
                         <select
@@ -154,9 +175,10 @@ const AddProduct = () => {
                     </div>
 
 
-                    <input type="submit" style={{padding:"10px",backgroundColor:"#084f8a",color:'#ffffff',border:'0px',margin:'10px 0px',fontSize:'20px',fontWeight:'500',width:"100%"}} value='Add Product' />
+                    <Button type='submit' variant='contained' sx={{backgroundColor:'#27c4f5',fontWeight:'700'}} fullWidth>AddProduct</Button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };

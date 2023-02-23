@@ -4,7 +4,7 @@
     background: #ffffff;
     border: 1px solid gray;
     cursor: pointer;
-    width: 130px;
+   
 }
 .homeCategory:hover{
     transform: scale(1.1);
@@ -20,3 +20,28 @@
     text-align: center;
 }
 
+@media screen and (min-width:687px) and (max-width:991px) {
+    .FlashGridCategory{
+        display: grid;
+        grid-template-columns: repeat(2 ,250px);
+        gap: 20px;
+    }
+    
+}
+
+/* ======================================
+end tab view =================================== */
+
+
+/*===========================================
+  mobile view 
+ =================== ==============================*/
+@media only screen and (max-width:688px) {
+
+    .homeCategory {
+       width: 80%;
+    }
+    .homeCategory img{
+       width: 100%;
+    }
+}

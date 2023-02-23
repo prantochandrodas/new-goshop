@@ -6,18 +6,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { Skeleton } from '@mui/material';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 // import './HomeFlashsale.css';
 export default function HomeFlashsales({flashSale}) {
+//  console.log(loading);
     const {picture,product_name,original_price,_id}=flashSale;
-    console.log(picture);
-    
+   
   return (
-    <Card sx={{ width:250 }} className="flashsale">
-      <CardMedia
-        sx={{ height: 200 }}
-        image={picture}
-        title="picture"
-      />
+    
+   <Card data-aos="zoom-in" sx={{ width:250 }} className="flashsale">
+       <CardMedia
+      sx={{ height: 200 }}
+      image={picture}
+      title="picture"
+    />
+     
       <CardContent>
         <Typography gutterBottom variant="p" component="div">
           {product_name}

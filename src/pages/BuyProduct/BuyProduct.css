@@ -1,4 +1,23 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+.buyProduct-Container{
+  font-family: 'Ubuntu', sans-serif!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buyProduct-Container-img img{
+  width: 300px;
+  margin: 0px 10px;
+}
+.buyProduct {
+  width: 400px;
+}
+.buyProduct-Product-Name {
+  font-family: 'Ubuntu', sans-serif!important;
+}
+.button-font {
+  font-family: 'Ubuntu', sans-serif!important;
+}
 @media screen and (min-width:687px) and (max-width:991px) {
 
    
@@ -12,6 +31,18 @@ end tab view =================================== */
   mobile view 
  =================== ==============================*/
 @media only screen and (max-width:688px) {
-
-    
+  .buyProduct-Container-img img{
+    width: 60%;
+  }
+  .buyProduct-Container{
+    display: block;
+    width: 90%;
+    margin: 0px auto;
+  }
+  .buyProduct {
+    width: 100%!important;
+  }
+  .buyProduct-Product-Name {
+    font-size: 18px!important;
+  }
 }

@@ -1,5 +1,6 @@
 
 import Main from "../Layout/Main/Main";
+import MyOrders from "../MyOrders/MyOrders";
 import About from "../pages/About/About";
 import AddProduct from "../pages/AddProduct/AddProduct";
 import BuyProduct from "../pages/BuyProduct/BuyProduct";
@@ -53,8 +54,15 @@ export const router=createBrowserRouter([
                 path:'/buyProduct/:id',
                 loader:({params})=>fetch(`http://localhost:5000/buyProduct/${params.id}`),               
                 element:<BuyProduct></BuyProduct>
-            }
-            
+            },
+            {
+                path:'/MyOrders',
+                element:<MyOrders></MyOrders>
+            }, 
+            {
+                path:'/WatchLater',
+                element:<WatchLater></WatchLater>
+            },
 
         ]
     },
@@ -65,6 +73,10 @@ export const router=createBrowserRouter([
             {
                 path:'/dashboard',
                 element:<WatchLater></WatchLater>
+            },
+            {
+                path:'/dashboard/MyOrders',
+                element:<MyOrders></MyOrders>
             },
             {
                 path:'/dashboard/addProduct',

@@ -1,40 +1,48 @@
-import React, {  useContext, useState } from 'react';
+import { Button, CircularProgress, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
+import { Box } from '@mui/system';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import AuthProvider, { AuthContext } from '../Context/AuthProvider';
-import Spinner from '../Spinner';
+import { AuthContext } from '../Context/AuthProvider';
 
 
 const Signup = () => {
-    const [signupError,SetSignupError]=useState('');
-    const {createUser,updateUser}=useContext(AuthContext);
+    const [role,setRole]=useState('');
+    const [signupError, SetSignupError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { createUser, updateUser } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const navigate=useNavigate();
-    const handelSignin = data => {
-       
-        SetSignupError('');
-        createUser(data.email,data.password)
-        .then(result=>{
-            const user = result.user;
-            console.log(user);
-            const userInfo={
-                displayName:data.name
-            }
-            updateUser(userInfo)
-           .then(()=>{
-                 <Spinner></Spinner>
-                saveUser(data.name,data.email,data.role);
-                navigate('/');
-           })
-           .catch(error=>console.log(error))
-        })
-        .catch(error=>{
-            SetSignupError(error.message);
-        })
-       
-      
+    const navigate = useNavigate();
+    const handelChange=(event)=>{
+        setRole(event.target.value);
     }
-    const saveUser=(name,email,role)=>{
+    const handelSignin = data => {
+        console.log(data);
+        setLoading(true);
+        SetSignupError('');
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        setLoading(false);
+                        saveUser(data.name, data.email, data.role);
+                        navigate('/');
+                    })
+                    .catch(error => console.log(error))
+            })
+            .catch(error => {
+                setLoading(false);
+                SetSignupError(error.message);
+            })
+
+
+    }
+    const saveUser = (name, email) => {
+        setLoading(true);
         const users = {
             name,
             role,
@@ -51,54 +59,86 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                setLoading(false);
+            }).catch(err => {
+                setLoading(false);
             })
+    }
+    if (loading) {
+        return <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '150px 0px' }}>
+            <CircularProgress />
+        </Box>
     }
     return (
         <div className=' loginFrom'>
             <div className='LoginFromChild'>
-            <h1 style={{fontSize:'2.25rem',lineHeight:'2.5rem'}}>SignUp</h1>
+                <h1 style={{ fontSize: '2.25rem', lineHeight: '2.5rem' }}>SignUp</h1>
                 <form onSubmit={handleSubmit(handelSignin)}>
-                <div style={{width:'100%'}}>
-                        <label >
-                            <span  style={{fontSize:'20px',fontWeight:'500',margin:"10px 0px",display:'block'}}>Name</span>
+
+                    {/* <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Name</span>
                         </label>
                         <input type="text"
-                            {...register("name", { required: "name is required" })}
-                            placeholder="name" style={{backgroundColor:'#ffffff',padding:' 10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.name && <p style={{color:"red"}} role="alert">{errors.name?.message}</p>}
-                    </div>
-                  <div style={{width:'100%'}}>
-                        <label >
-                            <span  style={{fontSize:'20px',fontWeight:'500',margin:"10px 0px",display:'block'}}>Email</span>
-                        </label>
-                        <input type="email"
-                            {...register("email", { required: "Email is required" })}
-                            placeholder="email" style={{backgroundColor:'#ffffff',padding:' 10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.email && <p style={{color:"red"}} role="alert">{errors.email?.message}</p>}
-                    </div>
-                    <div>
-                        <label >
-                            <span style={{fontSize:'20px',fontWeight:'500',margin:"10px 0px",display:'block'}}>password</span>
-                        </label>
-                        <input type="password"
-                            {...register("password", { required: "password is required" ,minLength:{value:6,message:'password must be 6 charecters'}})}
-                            placeholder="password" style={{backgroundColor:'#ffffff',padding:'10px 10px' ,border:'1px solid gray',borderRadius:'5px' ,width:"100%"}} />
-                        {errors.password && <p style={{color:"red"}} role="alert">{errors.password?.message}</p>}
-                    </div>
-                    <div >
-                        <select
-                            {...register("role", { required: "Select the role" })}
-                            className="" style={{width:'100%',fontSize:"15px" ,padding:"10px 10px",margin:"10px 0px"}}>
-                            <option disabled  value='buyer'>Buyer</option>
-                            <option value='buyer' style={{fontSize:'20px'}}>Buyer</option>
-                            <option value='seller' style={{fontSize:'20px'}}>Seller</option>
-                        </select>
-                        {errors.role && <p className='text-red-600'>{errors.role?.message}</p>}
-                    </div>
-                    <input type="submit" style={{padding:"10px",backgroundColor:"#084f8a",color:'#ffffff',border:'0px',margin:'10px 0px',fontSize:'20px',fontWeight:'500',width:"100%"}} value='SignUp' />
+                            {...register("name", { required: "Name is required" })}
+                            placeholder="Name" className="input input-bordered w-full max-w-xs" />
+                        {errors.name && <p className='text-red-600' role="alert">{errors.name?.message}</p>}
+                    </div> */}
+                    <TextField
+                        type='text'
+                        fullWidth
+                        {...register("name", { required: "name is required" })}
+                        placeholder='Enter Your Name'
+                        id="Name"
+                        label="Name"
+                        variant="outlined"
+                        error={Boolean(errors.name)}
+                        helperText={errors.name?.message}
+                        sx={{ marginBottom: 2 }}
+                    />
+
+                    <TextField
+                        type='email'
+                        fullWidth
+                        placeholder='Enter Your email'
+                        {...register("email", { required: "Email is required" })}
+                        id="Email"
+                        label="Email"
+                        variant="outlined"
+                        error={Boolean(errors.email)}
+                        helperText={errors.email?.message}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <TextField
+                        type='password'
+                        fullWidth
+                        {...register("password", { required: "password is required" })}
+                        placeholder='Enter Your password'
+                        id="Password"
+                        label="Password"
+                        variant="outlined"
+                        error={Boolean(errors.password)}
+                        helperText={errors.password?.message}
+                        sx={{ marginBottom: 2 }}
+                    />
+                    <FormControl>
+                        <FormLabel id="demo-radio-buttons-group-label">Chose user type</FormLabel>
+                        <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            name="radio-buttons-group"
+                            value={role}
+                            onChange={handelChange}
+                        >
+                            <FormControlLabel value="Buyer" control={<Radio />} label="Buyer" />
+                            <FormControlLabel value="Seller" control={<Radio />} label="Seller" />
+                            
+                        </RadioGroup>
+                    </FormControl>
+                   
+                    <Button type='submit' variant='contained' color='success' fullWidth>SignUp</Button>
                     {signupError && <p className='text-red-600'>{signupError}</p>}
                 </form>
-                <p style={{fontSize:"20px"}}>New to the site  ?<Link className='text-primary' to='/login'>Go to Login</Link></p>
+                <p style={{ fontSize: "20px" }}>New to the site  ?<Link className='text-primary' to='/login'>Go to Login</Link></p>
             </div>
         </div>
     );
