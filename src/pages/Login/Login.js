@@ -39,7 +39,7 @@ const Login = () => {
         createUserWithGoogle(provider)
             .then(result => {
                 const user = result.user;
-                fetch(`http://localhost:5000/googleUser?email=${user?.email}&name=${user?.displayName}`, {
+                fetch(` https://goshop-server-teal.vercel.app/googleUser?email=${user?.email}&name=${user?.displayName}`, {
                     method: 'PUT',
                 })
                     .then(res => res.json())

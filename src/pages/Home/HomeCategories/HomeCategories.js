@@ -8,7 +8,7 @@ import './HomeCategories.css';
 const HomeCategories = () => {
     const {data:categories=[],isLoading}=useQuery({
         queryKey:['categories'],
-        queryFn:()=>fetch('http://localhost:5000/category')
+        queryFn:()=>fetch(' https://goshop-server-teal.vercel.app/category')
         .then(res=>res.json())
 
     });

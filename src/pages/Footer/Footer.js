@@ -8,50 +8,44 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import logo from '../../assets/logo2.png';
 import './Footer.css'
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
             <footer class="padding_4x">
                 <div class="flex">
-                    
+
                     <section class="flex-content padding_1x">
                         <h3>Quick Links</h3>
-                        <a href="#">Jobs</a>
-                        <a href="#">Brand Assets</a>
-                        <a href="#">Investor Relations</a>
-                        <a href="#">Terms of Service</a>
+                        <Link style={{listStyle:"none", textDecoration:"none",fontWeight:"500",fontSize:"15px"}}  to='/'> Home</Link>
+                        <Link style={{listStyle:"none", textDecoration:"none",fontWeight:"500",fontSize:"15px"}}  to='/MyOrders'> MyOrders</Link>
+                        <Link style={{listStyle:"none", textDecoration:"none",fontWeight:"500",fontSize:"15px"}}  to='/WatchLater'> WatchLater</Link>
                     </section>
                     <section class="flex-content padding_1x">
                         <h3>Features</h3>
-                        <a href="#">Jobs</a>
-                        <a href="#">Brand Assets</a>
-                        <a href="#">Investor Relations</a>
-                        <a href="#">Terms of Service</a>
+                        <p>Authentication System</p>
+                        <p>Add Product</p>
+                        <p>Place order</p>
+                        <p>Watch Later</p>
                     </section>
                     <section class="flex-content padding_1x">
-                        <h3>Resources</h3>
-                        <a href="#">Guides</a>
-                        <a href="#">Research</a>
-                        <a href="#">Experts</a>
-                        <a href="#">Agencies</a>
+                        <h3>Technology</h3>
+                        <p>React</p>
+                        <p>Material ui</p>
+                        <p>Express</p>
+                        <p>MongoDB</p>
                     </section>
                     <section class="flex-content padding_1x">
                         <h3>Social Media</h3>
                         <p>Contact us on:-</p>
-                        <FacebookIcon sx={{color:'white', margin:'0px 5px'}}></FacebookIcon>
-                        <LinkedInIcon sx={{color:'white'}}></LinkedInIcon>
-                        <InstagramIcon sx={{color:'white',margin:'0px 5px'}}></InstagramIcon>
+                        <a href="https://www.facebook.com/pranto.chandrodas.33/" style={{display:'inline-block'}} target='_blank'> <FacebookIcon sx={{ color: 'white', margin: '0px 5px' }}></FacebookIcon></a>
+                        <a href="https://www.linkedin.com/in/pranto-das08/" style={{display:'inline-block'}} target='_blank'><LinkedInIcon sx={{ color: 'white' }}></LinkedInIcon></a>
+                        <a href="https://www.instagram.com/prantochandro/" style={{display:'inline-block'}} target='_blank'> <InstagramIcon sx={{ color: 'white', margin: '0px 5px' }}></InstagramIcon></a>
                     </section>
                 </div>
                 <div class="flex">
                     <section class="flex-content padding_1x">
-                        <p>Copyright ©2023 All rights reserved || website name</p>
-                    </section>
-                    <section class="flex-content padding_1x">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <p>Copyright ©2023 All rights reserved || GOSHOP</p>
                     </section>
                 </div>
             </footer>

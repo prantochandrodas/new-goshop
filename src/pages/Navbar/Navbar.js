@@ -6,8 +6,14 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/Logo.png'
 import { AuthContext } from '../Context/AuthProvider';
 import './Navbar.css';
+import { useQuery } from '@tanstack/react-query';
 const Navbar = () => {
     const {user,logOut}=useContext(AuthContext);
+    const {data:getUser=[],isLoading,refetch}=useQuery({
+        queryKey:['getUser'],
+        queryFn:()=>fetch(` https://goshop-server-teal.vercel.app/getUser?email=${user?.email}`)
+        .then(res=>res.json())
+    }); 
     const handelLogOut=()=>{
         logOut()
         .then(()=>{})
@@ -37,11 +43,24 @@ const Navbar = () => {
                                         user?.uid?
                                        <> 
                                        <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/'> Home</Link>
+                                       <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/AllProduct'> AllProducts</Link>
                                        <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/MyOrders'> MyOrders</Link>
                                        <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px',fontWeight:"500",fontSize:"15px"}}  to='/WatchLater'> WatchLater</Link>
-                                        <Link   style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"15px"}} to='/dashboard'> DashBoard</Link></> :
+                                      </> :
                                         <></>
                                       }
+                                       {
+                                          getUser?.role==="Seller"?
+                                           <> <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"15px"}} to='/dashboard/addProduct'>AddProductProduct</Link>
+                                           <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"15px"}} to='/dashboard/myproduct'>MyProduct</Link></>:
+                                           <></>
+                                        }
+                                          {
+                                          getUser?.role==="admin"?
+                                           <> <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"15px"}} to='/dashboard/manageUser'>manageUser</Link>
+                                           <Link style={{color:'black',listStyle:"none", textDecoration:"none", marginLeft:'20px', fontWeight:'500',fontSize:"15px"}} to='/dashboard/manageSeller'>manageSeller</Link></>:
+                                           <></>
+                                        }
                                     </Tabs>
                                     {
                                         user?.uid ?  <Button onClick={handelLogOut} sx={{ marginLeft: 'auto' }} variant='contained'>Logout</Button>:

@@ -7,7 +7,7 @@ import AllWatchLater from './AllWatchLater';
 
 const WatchLater = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/watchLater?email=${user?.email}`
+    const url = ` https://goshop-server-teal.vercel.app/watchLater?email=${user?.email}`
     const { data: watchLater = [], isLoading } = useQuery({
         queryKey: ['watchLater'],
         queryFn: async () => {

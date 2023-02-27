@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Box, Button, CircularProgress } from '@mui/material';
 import { AuthContext } from '../Context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -39,12 +39,12 @@ export default function Myproducts() {
     const {user}=React.useContext(AuthContext);
     const {data:myProducts=[],isLoading,refetch}=useQuery({
         queryKey:['myProducts'],
-        queryFn:()=>fetch(`http://localhost:5000/myProduct?email=${user?.email}`)
+        queryFn:()=>fetch(` https://goshop-server-teal.vercel.app/myProduct?email=${user?.email}`)
         .then(res=>res.json())
 
     });
     const handelDelete=(id)=>{
-        fetch(`http://localhost:5000/myProduct/${id}`,{
+        fetch(` https://goshop-server-teal.vercel.app/myProduct/${id}`,{
             method:'DELETE',
         })
         .then(res=>res.json())
@@ -106,6 +106,7 @@ export default function Myproducts() {
            
         </TableBody>
       </Table>
+      <ToastContainer />
     </TableContainer>
     
   );

@@ -10,10 +10,9 @@ const DashBrardNavbar = () => {
     const {user,logOut}=useContext(AuthContext);
     const {data:getUser=[],isLoading,refetch}=useQuery({
         queryKey:['getUser'],
-        queryFn:()=>fetch(`http://localhost:5000/getUser?email=${user?.email}`)
+        queryFn:()=>fetch(` https://goshop-server-teal.vercel.app/getUser?email=${user?.email}`)
         .then(res=>res.json())
     }); 
-    console.log(getUser);
     const navigate=useNavigate();
     const handelLogOut=()=>{
         logOut()

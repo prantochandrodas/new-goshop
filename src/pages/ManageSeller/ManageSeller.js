@@ -38,12 +38,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function ManageSeller() {
     const {data:ManageSellers=[],isLoading,refetch}=useQuery({
         queryKey:['ManageSellers'],
-        queryFn:()=>fetch(`http://localhost:5000/ManageSellers`)
+        queryFn:()=>fetch(` https://goshop-server-teal.vercel.app/ManageSellers`)
         .then(res=>res.json())
 
     });
     const handelDelete=(id)=>{
-        fetch(`http://localhost:5000/seller/${id}`,{
+        fetch(` https://goshop-server-teal.vercel.app/seller/${id}`,{
             method:'DELETE',
            
         })

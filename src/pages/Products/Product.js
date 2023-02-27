@@ -6,8 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-
+import { Button, Tooltip } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { AuthContext } from '../Context/AuthProvider';
 import { Link } from 'react-router-dom';
 
@@ -51,11 +51,13 @@ export default function Product({product,handelWatchLater}) {
             ${original_price}
         </Typography>
       </CardContent>
-      <CardActions>
-      <Link style={{listStyle:'none',textDecoration:'none',marginRight:'10px'}} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
-        {
-          user?.uid?<Button onClick={()=>handelWatchLater(product)} variant='contained' sx={{background:"#063970"}}>Watch Later</Button>:<><div></div></>
-        }
+      <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Link style={{ listStyle: 'none', textDecoration: 'none' }} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
+        <Tooltip title="Watch Later">
+          <IconButton>
+             <div onClick={()=>handelWatchLater(product)}><FavoriteBorderIcon></FavoriteBorderIcon></div>
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
     </div>

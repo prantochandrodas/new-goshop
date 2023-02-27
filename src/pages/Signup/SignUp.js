@@ -49,7 +49,7 @@ const Signup = () => {
             email
 
         }
-        fetch('http://localhost:5000/users', {
+        fetch(' https://goshop-server-teal.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

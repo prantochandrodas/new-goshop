@@ -15,7 +15,7 @@ const AddProduct = () => {
     const imgHostKey = process.env.REACT_APP_imgHostKey;
     const {data:categories=[]}=useQuery({
         queryKey:['categories'],
-        queryFn:()=>fetch('http://localhost:5000/category')
+        queryFn:()=>fetch(' https://goshop-server-teal.vercel.app/category')
         .then(res=>res.json())
 
     });
@@ -52,7 +52,7 @@ const AddProduct = () => {
                 }
               
 
-                fetch('http://localhost:5000/addProduct', {
+                fetch(' https://goshop-server-teal.vercel.app/addProduct', {
                     method: 'POST',
                     headers: {
                       'content-type':'application/json',
@@ -65,16 +65,6 @@ const AddProduct = () => {
                     .then(result => {
                         if(result.acknowledged){
                             setLoading(false);
-                            toast.success('Sucess fully Added', {
-                                position: "top-center",
-                                autoClose: 5000,
-                                hideProgressBar: false,
-                                closeOnClick: true,
-                                pauseOnHover: true,
-                                draggable: true,
-                                progress: undefined,
-                                theme: "light",
-                            });
                             navigate('/')
                         }
                     })

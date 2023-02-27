@@ -11,6 +11,7 @@ const BuyProduct = () => {
     console.log(products);
     const buyProducts=(products)=>{
         const placeOrder = {
+            product_id:products._id,
             picture: products.picture,
             product_name: products.product_name,
             original_price: products.original_price,
@@ -19,7 +20,7 @@ const BuyProduct = () => {
             advertise: false,
             paid: false
         }
-        fetch('http://localhost:5000/placeOrder', {
+        fetch(' https://goshop-server-teal.vercel.app/placeOrder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -30,7 +31,7 @@ const BuyProduct = () => {
             .then(result => {
                 console.log(result);
                 if (result.acknowledged) {
-                    toast.success('secessfully placed order!', {
+                    toast.success('Sucess fully Added', {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -40,7 +41,21 @@ const BuyProduct = () => {
                         progress: undefined,
                         theme: "light",
                     });
+
                 }
+               if(result===false){
+                toast.info('Already Added', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+
+               }
             })
     }
     return (

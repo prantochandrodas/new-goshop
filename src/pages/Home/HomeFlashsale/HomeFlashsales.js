@@ -6,33 +6,42 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import { Skeleton } from '@mui/material';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { IconButton, Tooltip } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 // import './HomeFlashsale.css';
-export default function HomeFlashsales({flashSale}) {
-//  console.log(loading);
-    const {picture,product_name,original_price,_id}=flashSale;
+export default function HomeFlashsales({ flashSale, handelWatchLater }) {
+
+  const { picture, product_name, original_price, _id } = flashSale;
    
   return (
-    
-   <Card data-aos="zoom-in" sx={{ width:250 }} className="flashsale">
-       <CardMedia
-      sx={{ height: 200 }}
-      image={picture}
-      title="picture"
-    />
-     
+
+    <Card data-aos="zoom-in" sx={{ width: 250 }} className="flashsale">
+      <CardMedia
+        sx={{ height: 200 }}
+        image={picture}
+        title="picture"
+      />
+
       <CardContent>
         <Typography gutterBottom variant="p" component="div">
           {product_name}
         </Typography>
-        <Typography variant="h5" sx={{color:"orange"}}>
-            ${original_price}
+        <Typography variant="h5" sx={{ color: "orange" }}>
+          ${original_price}
         </Typography>
       </CardContent>
-      <CardActions>
-       <Link style={{listStyle:'none',textDecoration:'none'}} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
+      <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Link style={{ listStyle: 'none', textDecoration: 'none' }} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
+        <Tooltip title="Watch Later">
+          <IconButton>
+            <div onClick={() => handelWatchLater(flashSale)}>
+
+              <FavoriteBorderIcon></FavoriteBorderIcon>
+            </div>
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

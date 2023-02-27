@@ -26,12 +26,12 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const { data: myOrders = [], isLoading ,refetch} = useQuery({
         queryKey: ['myOrders'],
-        queryFn: () => fetch(`http://localhost:5000/myOrder?email=${user?.email}`)
+        queryFn: () => fetch(` https://goshop-server-teal.vercel.app/myOrder?email=${user?.email}`)
             .then(res => res.json())
     });
 
     const handelDelete=(id)=>{
-        fetch(`http://localhost:5000/myOrder/${id}`,{
+        fetch(` https://goshop-server-teal.vercel.app/myOrder/${id}`,{
             method:'DELETE',
             headers:{
                 authorization:`bearar ${localStorage.getItem('accessToken')}`

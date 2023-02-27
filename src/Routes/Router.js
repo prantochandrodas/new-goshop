@@ -3,6 +3,7 @@ import Main from "../Layout/Main/Main";
 import MyOrders from "../MyOrders/MyOrders";
 import About from "../pages/About/About";
 import AddProduct from "../pages/AddProduct/AddProduct";
+import AllProducts from "../pages/AllProducts/AllProducts";
 import BuyProduct from "../pages/BuyProduct/BuyProduct";
 import DashBoard from "../pages/DashBoard/DashBoard/DashBoard";
 import Home from "../pages/Home/Home/Home";
@@ -47,12 +48,12 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/product/:id',
-                loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`),               
+                loader:({params})=>fetch(` https://goshop-server-teal.vercel.app/products/${params.id}`),               
                 element:<Products></Products>
             },
             {
                 path:'/buyProduct/:id',
-                loader:({params})=>fetch(`http://localhost:5000/buyProduct/${params.id}`),               
+                loader:({params})=>fetch(` https://goshop-server-teal.vercel.app/buyProduct/${params.id}`),               
                 element:<BuyProduct></BuyProduct>
             },
             {
@@ -63,6 +64,10 @@ export const router=createBrowserRouter([
                 path:'/WatchLater',
                 element:<WatchLater></WatchLater>
             },
+            {
+                path:'/AllProduct',
+                element:<AllProducts></AllProducts>
+            }
 
         ]
     },
