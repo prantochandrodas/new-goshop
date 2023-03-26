@@ -56,7 +56,7 @@ const Navbar = () => {
                                     }
                                    
                                     {
-                                        value && <DropDownProfile></DropDownProfile>
+                                        value && <DropDownProfile setValue={setValue}></DropDownProfile>
                                     }
                                 </>
                             )
