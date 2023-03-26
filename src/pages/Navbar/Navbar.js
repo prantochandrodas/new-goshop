@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/Logo.png'
 import { AuthContext } from '../Context/AuthProvider';
 import './Navbar.css';
-import { useQuery } from '@tanstack/react-query';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import NavManu from '../NavManu/NavManu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -41,9 +41,9 @@ const Navbar = () => {
                             (
                                 <>
                                    <div className='nav-search'>
-                                        <TextField id="outlined-basic" label="Search" variant="outlined" /><SearchIcon sx={{ background: 'orange', height: '56px', padding: '0px 15px', borderRadius: '0px 4px 4px 0px' }}></SearchIcon>
+                                        <TextField id="outlined-basic" label="Search" variant="outlined" className='search-field'/><SearchIcon sx={{ background: 'orange', height: '56px', padding: '0px 15px', borderRadius: '0px 4px 4px 0px' }}></SearchIcon>
                                     </div>
-                                    
+                                    <ShoppingCartIcon sx={{color:'black',fontSize:'40px',paddingLeft:'10px'}}></ShoppingCartIcon>
                                     {
                                         user?.uid ? <></> :
                                             <>

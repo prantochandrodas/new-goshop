@@ -6,6 +6,9 @@
     color: orange!important;
 }
 .nav-search {
-    width: 300px!important;
     margin-top: 10px!important;
+    margin-left: auto;
+}
+.search-field {
+    width: 400px!important;
 }
