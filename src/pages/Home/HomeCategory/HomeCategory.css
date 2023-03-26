@@ -44,4 +44,9 @@ end tab view =================================== */
     .homeCategory img{
        width: 100%;
     }
+    .homeCategory {
+        padding: 10px 0px;
+        margin: 10px 0px;
+       
+    }
 }

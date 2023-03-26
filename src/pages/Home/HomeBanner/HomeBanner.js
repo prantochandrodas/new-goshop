@@ -6,7 +6,7 @@ import banner4 from "../../../assets/banner/banner4.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import './HomeBanner.css';
 const HomeBanner = () => {
 
 
@@ -19,28 +19,27 @@ const HomeBanner = () => {
         autoplay: true,
         speed: 2000,
         autoplaySpeed: 3000,
-
     };
     return (
         <div>
-            <Slider {...settings}>
+            <Slider {...settings} className="carousel">
                 <div>
-                    <img src={banner} height={450} style={{ width: '100%' }} alt="" />
+                    <img src={banner} height="100%" style={{ width: '100%' }} alt="" />
                 </div>
                 <div>
-                    <img src={banner2} height={450} style={{ width: '100%' }} alt="" />
+                    <img src={banner2} height="100%"  style={{ width: '100%' }} alt="" />
                 </div>
                 <div>
-                    <img src={banner3} height={450} style={{ width: '100%' }} alt="" />
+                    <img src={banner3} height="100%"  style={{ width: '100%' }} alt="" />
                 </div>
                 <div>
-                    <img src={banner4} height={450} style={{ width: '100%' }} alt="" />
+                    <img src={banner4} height="100%"  style={{ width: '100%' }} alt="" />
                 </div>
                 <div>
-                    <img src={banner} height={450} style={{ width: '100%' }} alt="" />
+                    <img src={banner} height="100%"  style={{ width: '100%' }} alt="" />
                 </div>
                 <div>
-                    <img src={banner2} height={450} style={{ width: '100%' }} alt="" />
+                    <img src={banner2} height="100%"  style={{ width: '100%' }} alt="" />
                 </div>
             </Slider>
         </div>
