@@ -4,6 +4,9 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import './DropDownProfile.css'
+import EmailIcon from '@mui/icons-material/Email';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import LogoutIcon from '@mui/icons-material/Logout';
 const DropDownProfile = ({setValue}) => {
     const { user, logOut } = useContext(AuthContext);
     const handelLogOut = () => {
@@ -21,15 +24,13 @@ const DropDownProfile = ({setValue}) => {
             {
                 user?.uid ? <div style={{ display: 'flex', color: '#000000' }} className="dropDownProfile">
                     <ul style={{ flexDirection: 'column' }}>
-                        <li><Avatar alt="Prfile" src={user?.photoURL} /></li>
-                        <li>{user?.displayName}</li>
-                        <li>{user?.email}</li>
-                        <li>Profile Status : {getUser.role}</li>
+                        <li style={{display:'flex', alignItems:'center',justifyItems:'center'}}><Avatar alt="Prfile" src={user?.photoURL} sx={{marginRight:'6px'}} />{user?.displayName}</li>
+                        <li style={{display:'flex', alignItems:'center',justifyItems:'center'}}><EmailIcon sx={{marginRight:'10px'}}></EmailIcon>{user?.email}</li>
+                        <li style={{display:'flex', alignItems:'center',justifyItems:'center'}}><AutorenewIcon sx={{marginRight:'10px'}}></AutorenewIcon> Profile Status : {getUser.role}</li>
                         {
-                            user?.uid ? <div onClick={()=>setValue((prev)=>!prev)}><Button onClick={handelLogOut} sx={{ marginLeft: 'auto' }} variant='contained'>Logout</Button></div> :
+                            user?.uid ? <div onClick={()=>setValue((prev)=>!prev)}><li style={{display:'flex', alignItems:'center',justifyItems:'center',cursor:'pointer'}}><LogoutIcon></LogoutIcon><div onClick={handelLogOut} style={{marginLeft:'6px'}}>Logout</div></li></div> :
                                 <>
-                                    <Link to='/login' style={{ marginLeft: "auto", textDecoration: 'none' }}><Button sx={{ marginLeft: 'auto' }} variant='contained'>Login</Button></Link>
-                                    <Link to='/signup' style={{ marginLeft: "20px", textDecoration: 'none' }}><Button sx={{ marginLeft: 'auto' }} variant='contained'>SignUp</Button></Link>
+                                    
                                 </>
                         }
                     </ul>

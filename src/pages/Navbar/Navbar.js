@@ -25,25 +25,34 @@ const Navbar = () => {
     return (
         <React.Fragment>
             {
-               user?.uid ? <NavManu></NavManu>:<></>
+                isMatch ? (<>
+
+                </>) : <>
+                    {
+                        user?.uid ? <NavManu></NavManu> : <></>
+                    }
+                </>
             }
-           
-            <AppBar sx={{ background: '#ffffff', position: 'sticky', marginTop: '20px' }} elevation={0}>
+
+
+            <AppBar sx={{ background: '#ffffff', position: 'sticky', marginTop: '20px', padding:'0px!important' }} className="myAppbar" elevation={0}>
                 <Toolbar>
-                    {<img src={logo} height={80} alt="" />}
+                    {<img src={logo} height={80} alt="" className='appbarLogo' />}
                     {
                         isMatch ?
 
                             (<>
-
+                                <div className='mobile-nav-search'>
+                                    <TextField id="outlined-basic" label="Search" variant="outlined" className='mobile-search-field' size="small"/><SearchIcon sx={{ backgroundColor: 'orange', height: '40px', padding: '0px 10px', borderRadius: '0px 4px 4px 0px' }}></SearchIcon>
+                                </div>
                                 <DrawerCompo></DrawerCompo>
                             </>) :
                             (
                                 <>
-                                   <div className='nav-search'>
-                                        <TextField id="outlined-basic" label="Search" variant="outlined" className='search-field'/><SearchIcon sx={{ background: 'orange', height: '56px', padding: '0px 15px', borderRadius: '0px 4px 4px 0px' }}></SearchIcon>
+                                    <div className='nav-search'>
+                                        <TextField id="outlined-basic" label="Search" variant="outlined" className='search-field' /><SearchIcon sx={{ background: 'orange', height: '56px', padding: '0px 15px', borderRadius: '0px 4px 4px 0px' }}></SearchIcon>
                                     </div>
-                                    <ShoppingCartIcon sx={{color:'black',fontSize:'40px',paddingLeft:'10px'}}></ShoppingCartIcon>
+                                    <ShoppingCartIcon sx={{ color: 'orange', fontSize: '40px', paddingLeft: '10px' }}></ShoppingCartIcon>
                                     {
                                         user?.uid ? <></> :
                                             <>
@@ -52,9 +61,9 @@ const Navbar = () => {
                                             </>
                                     }
                                     {
-                                        user?.photoURL || user?.uid ?<div style={{marginLeft:'auto'}} onClick={()=>setValue((prev)=>!prev)}><AccountCircleIcon sx={{color:'black', fontSize:'60px'}}></AccountCircleIcon></div>:<></>
+                                        user?.photoURL || user?.uid ? <div style={{ marginLeft: 'auto' }} onClick={() => setValue((prev) => !prev)}><AccountCircleIcon sx={{ color: 'black', fontSize: '60px' }}></AccountCircleIcon></div> : <></>
                                     }
-                                   
+
                                     {
                                         value && <DropDownProfile setValue={setValue}></DropDownProfile>
                                     }

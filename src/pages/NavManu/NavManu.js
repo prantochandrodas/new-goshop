@@ -1,7 +1,7 @@
 import { Tabs } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import './NavManu.css';
 const NavManu = () => {
@@ -16,23 +16,23 @@ const NavManu = () => {
             {
                 user?.uid ?
                     <>
-                        <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/'> Home</Link>
-                        <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> AllProducts</Link>
-                        <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/MyOrders'> MyOrders</Link>
-                        <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/WatchLater'> WatchLater</Link>
+                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/'> Home</NavLink>
+                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> AllProducts</NavLink>
+                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/MyOrders'> MyOrders</NavLink>
+                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/WatchLater'> WatchLater</NavLink>
                     </> :
                     <></>
             }
             {
                 getUser?.role === "Seller" ?
-                    <> <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/addProduct'>AddProductProduct</Link>
-                        <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/myproduct'>MyProduct</Link></> :
+                    <> <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/addProduct'>AddProductProduct</NavLink>
+                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/myproduct'>MyProduct</NavLink></> :
                     <></>
             }
             {
                 getUser?.role === "admin" ?
-                    <> <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageUser'>manageUser</Link>
-                        <Link style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageSeller'>manageSeller</Link></> :
+                    <> <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageUser'>manageUser</NavLink>
+                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageSeller'>manageSeller</NavLink></> :
                     <></>
             }
         </div>

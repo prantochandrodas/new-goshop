@@ -12,3 +12,20 @@
 .search-field {
     width: 400px!important;
 }
+.mobile-nav-search {
+    padding:0px!important;
+}
+.mobile-search-field {
+    width: 100px!important;
+    
+}
+
+@media only screen and (max-width:688px) {
+    .myAppbar {
+        margin-top:0px!important;
+    }
+    .appbarLogo {
+        width: 70px;
+        height: 70px;
+    }
+  }
