@@ -35,7 +35,7 @@ const Navbar = () => {
             }
 
 
-            <AppBar sx={{ background: '#ffffff', position: 'sticky', padding: '10px!important' }} className="myAppbar" elevation={0}>
+            <AppBar sx={{ background: '#ffffff', position: 'sticky', padding: '10px 0px!important' }} className="myAppbar" elevation={0}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <NavLink to='/'>{<img src={logo} height={80} alt="" className='appbarLogo' />}</NavLink>
                     {

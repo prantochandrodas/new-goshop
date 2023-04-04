@@ -1,7 +1,19 @@
 .allWatchLater {
+    width: 90%;
     margin-top: 10px;
+    margin: 0px auto;
+}
+.watchLater {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
 }
 @media only screen and (max-width:688px) {
+    .watchLater {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 20px;
+    }
     .allWatchLater{
         width: 85%!important;
         margin: 10px auto;
@@ -9,5 +21,6 @@
     .allWatchLater_img {
         width: 200px!important;
         height: 150px!important;
+        margin: 0px auto;
     }
 }

@@ -10,6 +10,7 @@ import 'react-multi-carousel/lib/styles.css';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton, Tooltip } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
+import './HomeFlashsale.css';
 // import './HomeFlashsale.css';
 export default function HomeFlashsales({ flashSale, handelWatchLater,handleOpen,setBookProduct }) {
   console.log(flashSale);
@@ -17,11 +18,12 @@ export default function HomeFlashsales({ flashSale, handelWatchLater,handleOpen,
 
   return (
 
-    <Card data-aos="zoom-in" sx={{ width: 250 }} className="flashsale">
+    <Card data-aos="zoom-in" sx={{ width: 280 }} className="flashsale">
       <CardMedia
         sx={{ height: 200 }}
         image={picture}
         title="picture"
+        align="center"
       />
 
       <CardContent>

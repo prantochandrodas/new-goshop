@@ -32,9 +32,9 @@ export default function AllWatchLater({allWatchlater}) {
   };
 
   return (
-    <Card sx={{ width:350 }} className="allWatchLater">
+    <Card sx={{ width:280 }} className="allWatchLater">
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 200 }}
         image={picture}
         title="picture"
         className='allWatchLater_img'

@@ -5,13 +5,10 @@
 
 @media only screen and (max-width:688px) {
     .carousel {
-        width: 86%;
-        margin: 10px auto;
-        height: 200px;
+        height: 220px;
     }
 
     .carousel img {
         height: 200px;
-        border-radius: 10px;
     }
 }

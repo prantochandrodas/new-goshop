@@ -77,14 +77,13 @@ const HomeFlashsale = () => {
             })
     }
     return (
-        <div style={{ width: '90%', margin: '40px auto' }}>
-            <h3>FlashSale</h3>
+        <div>
+            <h3 style={{textAlign:'center'}}>FlashSale</h3>
             {isLoading ? (<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '150px 0px' }}>
                 <CircularProgress />
             </Box>) :
                 <div data-aos="zoom-in"
-                    data-aos-duration="1000">
-                    <CardContainer>
+                    data-aos-duration="1000" className='HomeFlashSale'>
                         {
                             flashSales.map(flashSale => <HomeFlashsales
                                 key={flashSale._id}
@@ -96,8 +95,6 @@ const HomeFlashsale = () => {
                                 setBookProduct={setBookProduct}
                             ></HomeFlashsales>)
                         }
-                    </CardContainer>
-
                 </div>
             }
             <ToastContainer />

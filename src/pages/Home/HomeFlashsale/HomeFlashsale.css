@@ -1,15 +1,11 @@
-.FlashGridCategory{
+.HomeFlashSale {
     display: grid;
-    grid-template-columns: repeat(4 ,250px);
+    grid-template-columns: repeat(4,1fr);
     gap: 20px;
 }
-@media screen and (min-width:687px) and (max-width:991px) {
-    .FlashGridCategory{
-        display: grid;
-        grid-template-columns: repeat(2 ,250px);
-        gap: 20px;
-    }
-    
+.flashsale {
+    width: 90%;
+    margin: 0px auto;
 }
 
 /* ======================================
@@ -20,14 +16,14 @@ end tab view =================================== */
   mobile view 
  =================== ==============================*/
 @media only screen and (max-width:688px) {
-
-    .FlashGridCategory{
-        display: block;
-        width: 80%;
-        margin: 0px auto;
+    .HomeFlashSale {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 20px;
     }
     .flashsale {
-        width: 100%;
-        margin:20px 0px;
+        width: 90%;
+        margin: 0px auto;
     }
+ 
 }

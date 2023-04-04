@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import { ProductContainer } from '../Home/HomeFlashsale/HomeFlashSalestyle';
 import AllWatchLater from './AllWatchLater';
-
+import './AllWatchLater.css'
 const WatchLater = () => {
     const { user } = useContext(AuthContext);
     const url = ` https://goshop-server-teal.vercel.app/watchLater?email=${user?.email}`
@@ -29,7 +29,7 @@ const WatchLater = () => {
                 watchLater?.length === 0 ? <div>
                     <h1 style={{ color: 'red', textAlign: 'center', marginTop: '200px' }}>No Product found</h1>
                 </div> :
-                    <div>
+                    <div className='watchLater'>
                         {
                             watchLater.map(allWatchlater => <AllWatchLater
                                 key={allWatchlater._id}
