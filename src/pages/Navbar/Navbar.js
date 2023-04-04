@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
-import { Avatar, Button, Tab, Tabs, TextField, Toolbar, Typography, useMediaQuery, useTheme, useThemeProps } from '@mui/material';
+import { Avatar, Button, IconButton, Tab, Tabs, TextField, Toolbar, Tooltip, Typography, useMediaQuery, useTheme, useThemeProps } from '@mui/material';
 import DrawerCompo from '../DrawerCompo/DrawerCompo';
 import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import logo from '../../assets/Logo.png'
@@ -35,9 +35,9 @@ const Navbar = () => {
             }
 
 
-            <AppBar sx={{ background: '#ffffff', position: 'sticky', padding:'10px!important' }} className="myAppbar" elevation={0}>
-                <Toolbar sx={{display:'flex',justifyContent:'space-between'}}>
-                    {<img src={logo} height={80} alt="" className='appbarLogo' />}
+            <AppBar sx={{ background: '#ffffff', position: 'sticky', padding: '10px!important' }} className="myAppbar" elevation={0}>
+                <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <NavLink to='/'>{<img src={logo} height={80} alt="" className='appbarLogo' />}</NavLink>
                     {
                         isMatch ?
 
@@ -53,17 +53,29 @@ const Navbar = () => {
                                                 <Link to='/signup' style={{ marginLeft: "20px", textDecoration: 'none' }}><Button sx={{ marginLeft: 'auto' }} variant='contained'>SignUp</Button></Link>
                                             </>
                                     }
-                                  <div style={{display:'flex', alignItems:'center',justifyContent:'center',marginleft:'auto'}}>
-                                         <NavLink style={{listStyle: "none", textDecoration: "none"}} to='/MyOrders'> <ShoppingCartOutlinedIcon sx={{fontSize:'30px',color:'orange'}}></ShoppingCartOutlinedIcon></NavLink>
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginleft: 'auto' }}>
+                                        <NavLink style={{ listStyle: "none", textDecoration: "none" }} to='/MyOrders'>
+                                            <Tooltip title="Cart">
+                                                <IconButton>
+                                                    <ShoppingCartOutlinedIcon sx={{ fontSize: '30px', color: 'orange' }}></ShoppingCartOutlinedIcon>
+                                                </IconButton>
+                                            </Tooltip>
+                                        </NavLink>
                                         {
-                                            user?.photoURL || user?.uid ? <div style={{ marginLeft: 'auto' }} onClick={() => setValue((prev) => !prev)}><AccountCircleIcon sx={{ color: 'black', fontSize: '40px' }}></AccountCircleIcon></div> : <></>
+                                            user?.photoURL || user?.uid ? <div style={{ marginLeft: 'auto' }} onClick={() => setValue((prev) => !prev)}>
+                                                <Tooltip title="Click Here">
+                                                    <IconButton>
+                                                        <AccountCircleIcon sx={{ color: 'black', fontSize: '40px' }}></AccountCircleIcon>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </div> : <></>
                                         }
                                         {
-                                            value && <DropDownProfile setValue={setValue} style={{fontSize:'35px'}}></DropDownProfile>
+                                            value && <DropDownProfile setValue={setValue} style={{ fontSize: '35px' }}></DropDownProfile>
                                         }
-                                    
-                                  </div>
-                                   
+
+                                    </div>
+
                                 </>
                             )
                     }
