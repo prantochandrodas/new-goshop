@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-
+import './AllWatchLater.css';
 import { AuthContext } from '../Context/AuthProvider';
 
 const ExpandMore = styled((props) => {
@@ -32,11 +32,12 @@ export default function AllWatchLater({allWatchlater}) {
   };
 
   return (
-    <Card sx={{ width:350 }} className="flashsale">
+    <Card sx={{ width:350 }} className="allWatchLater">
       <CardMedia
         sx={{ height: 300 }}
         image={picture}
         title="picture"
+        className='allWatchLater_img'
       />
       <CardContent>
         <Typography gutterBottom variant="p" component="div" sx={{fontWeight:"bold"}}>

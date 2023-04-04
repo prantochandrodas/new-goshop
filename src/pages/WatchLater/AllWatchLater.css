@@ -1,0 +1,13 @@
+.allWatchLater {
+    margin-top: 10px;
+}
+@media only screen and (max-width:688px) {
+    .allWatchLater{
+        width: 85%!important;
+        margin: 10px auto;
+    }
+    .allWatchLater_img {
+        width: 200px!important;
+        height: 150px!important;
+    }
+}

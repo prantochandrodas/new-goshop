@@ -18,29 +18,27 @@ const WatchLater = () => {
     });
     console.log(watchLater.length);
     if (isLoading) {
-        return <Box sx={{ display: 'flex' ,alignItems:'center',justifyContent:'center',margin:'150px 0px'}}>
-        <CircularProgress />
-      </Box>
+        return <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '150px 0px' }}>
+            <CircularProgress />
+        </Box>
     }
     return (
         <div>
-            <h1 style={{textAlign:'center'}}>Watch Later Products </h1>
+            <h3 style={{ textAlign: 'center' }}>Watch Later Products </h3>
             {
-                watchLater?.length===0?<div>
-                    <h1 style={{color:'red',textAlign:'center',marginTop:'200px'}}>No Product found</h1>
-                </div>:
-                <div>
-                    <ProductContainer>
+                watchLater?.length === 0 ? <div>
+                    <h1 style={{ color: 'red', textAlign: 'center', marginTop: '200px' }}>No Product found</h1>
+                </div> :
+                    <div>
                         {
                             watchLater.map(allWatchlater => <AllWatchLater
                                 key={allWatchlater._id}
                                 allWatchlater={allWatchlater}
                             ></AllWatchLater>)
                         }
-                    </ProductContainer>
-            </div>
+                    </div>
             }
-            
+
         </div>
     );
 };
