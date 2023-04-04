@@ -23,7 +23,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function Product({product,handelWatchLater}) {
+export default function Product({product,handelWatchLater,handleOpen,setBookProduct}) {
   const {user}=React.useContext(AuthContext)
     const {picture,posted_date,product_name,original_price,_id}=product;
   const [expanded, setExpanded] = React.useState(false);
@@ -52,7 +52,7 @@ export default function Product({product,handelWatchLater}) {
         </Typography>
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link style={{ listStyle: 'none', textDecoration: 'none' }} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
+      <div onClick={()=>setBookProduct(product)}><Button variant='contained' onClick={handleOpen}>Buy Now</Button></div>
         <Tooltip title="Watch Later">
           <IconButton>
              <div onClick={()=>handelWatchLater(product)}><FavoriteBorderIcon></FavoriteBorderIcon></div>

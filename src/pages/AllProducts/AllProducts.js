@@ -1,15 +1,21 @@
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Context/AuthProvider';
 import { CardContainer, HeaderText } from '../Home/HomeFlashsale/HomeFlashSalestyle';
 import AllProduct from './AllProduct';
+import BookingModal from '../BookingModal/BookingModal';
 
 const AllProducts = () => {
     const{user}=useContext(AuthContext);
+    const [bookProduct,setBookProduct]=useState(null);
+    const [open, setOpen] = React.useState(false);
+    
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const { data: allProducts = [], isLoading } = useQuery({
         queryKey: ['allProducts'],
         queryFn: () => fetch(' https://goshop-server-teal.vercel.app/allProducts')
@@ -84,10 +90,20 @@ const AllProducts = () => {
                             key={allProduct._id}
                             allProduct={allProduct}
                             handelWatchLater={handelWatchLater}
+                            handleOpen={handleOpen}
+                            setBookProduct={setBookProduct}
                         ></AllProduct>)
                     }
                 </CardContainer>
             </div>
+            }
+             {
+                bookProduct && <BookingModal
+                bookProduct={bookProduct}
+                setBookProduct={setBookProduct}
+                setOpen={setOpen}
+                open={open}
+                handleClose={handleClose}></BookingModal>
             }
         </div>
     );

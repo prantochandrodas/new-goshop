@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Tooltip,
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-const AllProduct = ({ allProduct, handelWatchLater }) => {
+const AllProduct = ({ allProduct, handelWatchLater,handleOpen,setBookProduct }) => {
      const { picture, product_name, original_price, _id } = allProduct;
     
     return (
@@ -21,7 +21,7 @@ const AllProduct = ({ allProduct, handelWatchLater }) => {
           </Typography>
         </CardContent>
         <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Link style={{ listStyle: 'none', textDecoration: 'none' }} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
+        <div onClick={()=>setBookProduct(allProduct)}><Button variant='contained' onClick={handleOpen}>Buy Now</Button></div>
           <Tooltip title="Watch Later">
             <IconButton>
               <div onClick={() => handelWatchLater(allProduct)}>
