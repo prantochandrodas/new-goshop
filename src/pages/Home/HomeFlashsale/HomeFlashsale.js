@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import HomeFlashsales from './HomeFlashsales';
 import './HomeFlashsale.css';
-import { HeaderText, CardContainer } from './HomeFlashSalestyle';
+import { CardContainer } from './HomeFlashSalestyle';
 import { Box } from '@mui/system';
 import { CircularProgress } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';

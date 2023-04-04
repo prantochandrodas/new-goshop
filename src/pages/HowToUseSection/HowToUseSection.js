@@ -5,7 +5,8 @@ import image3 from '../../assets/cash-back.png'
 import './HowToUseSection.css'
 const HowToUseSection = () => {
     return (
-        <div className='HowToUse'>
+        <div className='HowToUse' data-aos="fade-right"
+        data-aos-duration="1000">
             <h2 style={{textAlign:'center'}}>How it works</h2>
             <div className='main_div'>
                 <div className='child_div' width="33%">
