@@ -11,10 +11,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton, Tooltip } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 // import './HomeFlashsale.css';
-export default function HomeFlashsales({ flashSale, handelWatchLater }) {
+export default function HomeFlashsales({ flashSale, handelWatchLater,handleOpen,setBookProduct }) {
   console.log(flashSale);
   const { picture, product_name, original_price, _id } = flashSale;
-   
+
   return (
 
     <Card data-aos="zoom-in" sx={{ width: 250 }} className="flashsale">
@@ -33,7 +33,7 @@ export default function HomeFlashsales({ flashSale, handelWatchLater }) {
         </Typography>
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link style={{ listStyle: 'none', textDecoration: 'none' }} to={`/buyProduct/${_id}`}> <Button variant='contained'>Buy Now</Button></Link>
+         <div onClick={()=>setBookProduct(flashSale)}><Button variant='contained' onClick={handleOpen}>Buy Now</Button></div>
         <Tooltip title="Watch Later">
           <IconButton>
             <div onClick={() => handelWatchLater(flashSale)}>

@@ -7,9 +7,15 @@ import { Box } from '@mui/system';
 import { CircularProgress } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
+import BookingModal from '../../BookingModal/BookingModal';
 
 const HomeFlashsale = () => {
-    const [watchLater,setWatchLater]=useState(false);
+    const [bookProduct,setBookProduct]=useState(null);
+    const [open, setOpen] = React.useState(false);
+    
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [watchLater, setWatchLater] = useState(false);
     const { user } = useContext(AuthContext);
     const { data: flashSales = [], isLoading } = useQuery({
         queryKey: ['flashSale'],
@@ -17,9 +23,9 @@ const HomeFlashsale = () => {
             .then(res => res.json())
 
     });
-    const handelWatchLater = (product) => { 
+    const handelWatchLater = (product) => {
         const watchLater = {
-            product_id:product._id,
+            product_id: product._id,
             category_id: product.category_id,
             picture: product.picture,
             product_name: product.product_name,
@@ -56,18 +62,18 @@ const HomeFlashsale = () => {
                         theme: "light",
                     });
                 }
-               if(result===false){
-                toast.info('Already Added', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-               }
+                if (result === false) {
+                    toast.info('Already Added', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
             })
     }
     return (
@@ -76,22 +82,34 @@ const HomeFlashsale = () => {
             {isLoading ? (<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '150px 0px' }}>
                 <CircularProgress />
             </Box>) :
-            <div data-aos="zoom-in"
-                     data-aos-duration="1000">
-                <CardContainer>
-                    {
-                        flashSales.map(flashSale => <HomeFlashsales
-                            key={flashSale._id}
-                            flashSale={flashSale}
-                            handelWatchLater={handelWatchLater}
-                            setWatchLater={setWatchLater}
-                            watchLater={watchLater}
-                        ></HomeFlashsales>)
-                    }
-                </CardContainer>
-            </div>
+                <div data-aos="zoom-in"
+                    data-aos-duration="1000">
+                    <CardContainer>
+                        {
+                            flashSales.map(flashSale => <HomeFlashsales
+                                key={flashSale._id}
+                                flashSale={flashSale}
+                                handelWatchLater={handelWatchLater}
+                                setWatchLater={setWatchLater}
+                                watchLater={watchLater}
+                                handleOpen={handleOpen}
+                                setBookProduct={setBookProduct}
+                            ></HomeFlashsales>)
+                        }
+                    </CardContainer>
+
+                </div>
             }
-   <ToastContainer />
+            <ToastContainer />
+            {
+                bookProduct && <BookingModal
+                bookProduct={bookProduct}
+                setBookProduct={setBookProduct}
+                setOpen={setOpen}
+                open={open}
+                handleClose={handleClose}></BookingModal>
+            }
+            
         </div>
     );
 };
