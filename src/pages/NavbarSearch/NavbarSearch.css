@@ -1,0 +1,17 @@
+    .search {
+    width: 70%!important;
+    margin: 0px auto;  
+    margin-top: -20px;
+    display: flex;
+  }
+  .search_field{
+      background-color: #ffffff;
+      width: 100%;
+      border: none!important;
+      border-radius: 0px!important;
+  }
+  .search_btn{
+      background-color: #ff6a00!important;
+      text-transform: capitalize!important;
+      border-radius: 0px 5px 5px 0px!important;
+  }

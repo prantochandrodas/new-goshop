@@ -60,7 +60,10 @@ const MyOrders = () => {
         <div>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
+                   {
+                    myOrders.length>0?
+                    <>
+                        <TableHead>
                         <TableRow>
                             <StyledTableCell align="center">Product Name</StyledTableCell>
                             <StyledTableCell align="center">Picture</StyledTableCell>
@@ -69,6 +72,7 @@ const MyOrders = () => {
 
                         </TableRow>
                     </TableHead>
+                   
                     <TableBody>
 
                         {myOrders.map(myOrder =>
@@ -89,6 +93,9 @@ const MyOrders = () => {
 
 
                     </TableBody>
+                    </>:<h1>No Product Found Please place your order</h1>
+                   }
+                    
                 </Table>
             </TableContainer>
             <ToastContainer />

@@ -8,7 +8,6 @@ const BuyProduct = () => {
     
     const { user } = useContext(AuthContext);
     const products = useLoaderData();
-    console.log(products);
     const buyProducts=(products)=>{
         const placeOrder = {
             product_id:products._id,

@@ -17,7 +17,7 @@ const HomeCategories = () => {
     return (
         <div  data-aos="zoom-in"
         data-aos-duration="1000"  className='categories' style={{width:'90%',margin:'40px auto'}}>
-            <HeaderText>Categories</HeaderText>
+            <h3>Categories</h3>
             {isLoading?(<Box sx={{ display: 'flex' ,alignItems:'center',justifyContent:'center',margin:'150px 0px'}}>
         <CircularProgress />
       </Box>):<>

@@ -5,3 +5,8 @@
 .active {
     color: orange!important;
 }
+.newhover:hover{
+    background: #535a5c;
+    padding: 8px;
+    color: orange!important;
+}

@@ -7,6 +7,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './HomeBanner.css';
+import { NavLink } from 'react-router-dom';
+import NavbarSearch from '../../NavbarSearch/NavbarSearch';
 const HomeBanner = () => {
 
 
@@ -24,24 +26,24 @@ const HomeBanner = () => {
         <div>
             <Slider {...settings} className="carousel">
                 <div>
-                    <img src={banner} height="100%" style={{ width: '100%' }} alt="" />
+                    <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> <img src={banner} height="100%" style={{ width: '100%' }} alt="" /></NavLink>
                 </div>
                 <div>
-                    <img src={banner2} height="100%"  style={{ width: '100%' }} alt="" />
+                    <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> <img src={banner2} height="100%" style={{ width: '100%' }} alt="" /></NavLink>
                 </div>
                 <div>
-                    <img src={banner3} height="100%"  style={{ width: '100%' }} alt="" />
+                    <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> <img src={banner3} height="100%" style={{ width: '100%' }} alt="" /></NavLink>
                 </div>
                 <div>
-                    <img src={banner4} height="100%"  style={{ width: '100%' }} alt="" />
+                    <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> <img src={banner4} height="100%" style={{ width: '100%' }} alt="" /></NavLink>
                 </div>
                 <div>
-                    <img src={banner} height="100%"  style={{ width: '100%' }} alt="" />
+                    <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> <img src={banner} height="100%" style={{ width: '100%' }} alt="" /></NavLink>
                 </div>
                 <div>
-                    <img src={banner2} height="100%"  style={{ width: '100%' }} alt="" />
+                    <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> <img src={banner2} height="100%" style={{ width: '100%' }} alt="" /></NavLink>
                 </div>
-            </Slider>
+            </Slider> 
         </div>
     );
 };

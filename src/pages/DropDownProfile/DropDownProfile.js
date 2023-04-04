@@ -24,11 +24,11 @@ const DropDownProfile = ({setValue}) => {
             {
                 user?.uid ? <div style={{ display: 'flex', color: '#000000' }} className="dropDownProfile">
                     <ul style={{ flexDirection: 'column' }}>
-                        <li style={{display:'flex', alignItems:'center',justifyItems:'center'}}><Avatar alt="Prfile" src={user?.photoURL} sx={{marginRight:'6px'}} />{user?.displayName}</li>
-                        <li style={{display:'flex', alignItems:'center',justifyItems:'center'}}><EmailIcon sx={{marginRight:'10px'}}></EmailIcon>{user?.email}</li>
-                        <li style={{display:'flex', alignItems:'center',justifyItems:'center'}}><AutorenewIcon sx={{marginRight:'10px'}}></AutorenewIcon> Profile Status : {getUser.role}</li>
+                        <li style={{display:'flex', alignItems:'center',justifyItems:'center',padding:'10px'}} className='hover'><Avatar alt="Prfile" src={user?.photoURL} sx={{marginRight:'6px'}} />{user?.displayName}</li>
+                        <li style={{display:'flex', alignItems:'center',justifyItems:'center',padding:'10px'}} className='hover'><EmailIcon sx={{marginRight:'10px'}}></EmailIcon>{user?.email}</li>
+                        <li style={{display:'flex', alignItems:'center',justifyItems:'center',padding:'10px'}} className='hover'><AutorenewIcon sx={{marginRight:'10px'}}></AutorenewIcon> Profile Status : {getUser.role}</li>
                         {
-                            user?.uid ? <div onClick={()=>setValue((prev)=>!prev)}><li style={{display:'flex', alignItems:'center',justifyItems:'center',cursor:'pointer'}}><LogoutIcon></LogoutIcon><div onClick={handelLogOut} style={{marginLeft:'6px'}}>Logout</div></li></div> :
+                            user?.uid ? <div onClick={()=>setValue((prev)=>!prev)} className='hover' style={{paddingLeft:'15px'}}><li style={{display:'flex', alignItems:'center',justifyItems:'center',cursor:'pointer'}}><LogoutIcon></LogoutIcon><div onClick={handelLogOut} style={{marginLeft:'6px'}}>Logout</div></li></div> :
                                 <>
                                     
                                 </>

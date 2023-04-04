@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const AllProduct = ({ allProduct, handelWatchLater }) => {
      const { picture, product_name, original_price, _id } = allProduct;
-     console.log(allProduct);
+    
     return (
         <Card  sx={{ width: 250 }} className="flashsale">
         <CardMedia

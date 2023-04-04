@@ -2,6 +2,7 @@ import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Context/AuthProvider';
 import { CardContainer, HeaderText } from '../Home/HomeFlashsale/HomeFlashSalestyle';

@@ -29,3 +29,8 @@
     border-left: 1px solid gray;
     background-color: white;
 }
+.hover:hover {
+    background: rgba(227,227,228,255);
+    /* padding: 10px; */
+    border-radius: 4px;
+}

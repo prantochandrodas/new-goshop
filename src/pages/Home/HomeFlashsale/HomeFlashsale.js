@@ -72,7 +72,7 @@ const HomeFlashsale = () => {
     }
     return (
         <div style={{ width: '90%', margin: '40px auto' }}>
-            <HeaderText>FlashSale</HeaderText>
+            <h3>FlashSale</h3>
             {isLoading ? (<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '150px 0px' }}>
                 <CircularProgress />
             </Box>) :

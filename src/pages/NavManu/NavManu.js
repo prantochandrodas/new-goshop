@@ -16,23 +16,23 @@ const NavManu = () => {
             {
                 user?.uid ?
                     <>
-                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/'> Home</NavLink>
-                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> AllProducts</NavLink>
-                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/MyOrders'> MyOrders</NavLink>
-                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/WatchLater'> WatchLater</NavLink>
+                        <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/'> Home</NavLink>
+                        <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/AllProduct'> AllProducts</NavLink>
+                        <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/MyOrders'> MyOrders</NavLink>
+                        <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: "500", fontSize: "15px" }} to='/WatchLater'> WatchLater</NavLink>
                     </> :
                     <></>
             }
             {
                 getUser?.role === "Seller" ?
-                    <> <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/addProduct'>AddProductProduct</NavLink>
-                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/myproduct'>MyProduct</NavLink></> :
+                    <> <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/addProduct'>AddProductProduct</NavLink>
+                        <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/myproduct'>MyProduct</NavLink></> :
                     <></>
             }
             {
                 getUser?.role === "admin" ?
-                    <> <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageUser'>manageUser</NavLink>
-                        <NavLink style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageSeller'>manageSeller</NavLink></> :
+                    <> <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageUser'>manageUser</NavLink>
+                        <NavLink className='newhover' style={{ color: 'black', listStyle: "none", textDecoration: "none", marginLeft: '20px', fontWeight: '500', fontSize: "15px" }} to='/dashboard/manageSeller'>manageSeller</NavLink></> :
                     <></>
             }
         </div>

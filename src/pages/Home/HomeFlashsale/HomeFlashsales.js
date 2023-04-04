@@ -12,7 +12,7 @@ import { IconButton, Tooltip } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 // import './HomeFlashsale.css';
 export default function HomeFlashsales({ flashSale, handelWatchLater }) {
-
+  console.log(flashSale);
   const { picture, product_name, original_price, _id } = flashSale;
    
   return (
